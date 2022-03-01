@@ -1,14 +1,21 @@
 package boardgame;
 
 import java.util.ArrayList;
+import game.Symbol;
 
 public class Piece {
 
 	Position position;
+	private Symbol symbol;
 	private Board board;
 	
-	public Piece(Board board) {
+	public Piece(Symbol symbol, Board board) {
+		this.symbol = symbol;
 		this.board = board;
+	}
+	
+	public Symbol getSymbol() {
+		return symbol;
 	}
 	
 	Board getBoard() {
@@ -33,6 +40,11 @@ public class Piece {
 		}
 		return false;
 		
+	}
+	
+	boolean IsThereOpponentPiece(Position position) {
+		Piece piece = getBoard().piece(position);
+		return piece != null && piece.getSymbol() != symbol;
 	}
 	
 }

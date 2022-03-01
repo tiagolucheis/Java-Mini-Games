@@ -1,24 +1,43 @@
 package boardgame;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Board {
 
 	private int rows;
 	private int columns;
-	private ArrayList<ArrayList<Piece>> pieces;
+	private List<List<Piece>> pieces;
 	
 	public Board(int rows, int columns) {
 		this.rows = rows;
 		this.columns = columns;
 	}
 	
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+
 	public Piece piece(Position position) {
 		
 		if (!positionExists(position)) {
 			throw new BoardException("Position not on the board");
 		}
 		return pieces.get(position.getRow()).get(position.getColumn());
+		
+	}
+	
+
+	public Piece piece(int row, int column) {
+		
+		if (!positionExists(row, column)) {
+			throw new BoardException("Position not on the board");
+		}
+		return pieces.get(row).get(column);
 		
 	}
 	

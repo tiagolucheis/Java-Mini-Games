@@ -20,7 +20,22 @@ public class Match {
 		currentPlayer = firstPlayer;
 		
 	}
+
+	public int getTurn() {
+		return turn;
+	}	
 	
+	public ArrayList<ArrayList<Piece>> getPieces(){
+		
+		ArrayList<ArrayList<Piece>> mat = new ArrayList<ArrayList<Piece>>();
+		
+		for (int i = 0; i < board.getRows(); i++) {
+			for (int j = 0; j < board.getColumns(); j++) {
+				mat.get(i).add(j, board.piece(i, j));
+			}
+		}
+		return mat;
+	}
 	
 	
 }
